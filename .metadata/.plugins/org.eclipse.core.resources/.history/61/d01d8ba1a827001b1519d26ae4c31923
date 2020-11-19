@@ -1,0 +1,9 @@
+package com.example.domain;
+
+public class tradeVO {
+	private String tid;
+	private String ano;
+	private String type;
+	private String tradeNo;
+	private Date tradeDate;
+}

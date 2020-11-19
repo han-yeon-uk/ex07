@@ -1,0 +1,9 @@
+package com.example.mapper;
+
+import java.util.List;
+
+import com.example.domain.BoardVO;
+
+public interface BoardMapper {
+	public List<BoardVO> list();
+}

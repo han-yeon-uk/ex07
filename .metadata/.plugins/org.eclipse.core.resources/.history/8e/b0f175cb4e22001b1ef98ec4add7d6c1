@@ -1,0 +1,50 @@
+package com.example.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.example.domain.AddVO;
+import com.example.mapper.AddMapper;
+
+@Controller
+public class AddController {
+	@Autowired
+	AddMapper mapper;
+	
+	//list.jsp로 이동
+	@RequestMapping("/list")
+	public String list(Model model){
+		model.addAttribute("list",mapper.list()); //eclipse에 request.setAttribute대신 사용
+		return "list";
+	}
+	//insert.jsp로 이동
+	@RequestMapping("/insert")
+	public void insert(){	
+	}
+	//action=insert method=post로 submit되면 vo값을 통하여 주소등록 후 /list로 이동
+	@RequestMapping(value="/insert",method=RequestMethod.POST)
+	public String insertPost(AddVO vo){ //vo에 저장된 변수명과 입력받아온 text값의 이름과 동일하면 알아서 처리함
+		System.out.println(vo.toString());
+		mapper.insert(vo);
+		return "redirect:list"; //redirect를 추가하면 /list로 이동하여 입력한 데이터도 list에 출력되도록함	
+	}
+	//read.jsp로 이동
+	@RequestMapping("/read")
+	public void read(int ano, Model model){
+		model.addAttribute("vo",mapper.read(ano));
+	}
+	//action=insert method=post로 submit되면 vo값을 통하여 주소수정 후 /list로 이동
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String updatePost(AddVO vo){ //vo에 저장된 변수명과 입력받아온 text값의 이름과 동일하면 알아서 처리함
+		System.out.println(vo.toString());
+		mapper.update(vo);
+		return "redirect:list"; //redirect를 추가하면 /list로 이동하여 입력한 데이터도 list에 출력되도록함	
+	}
+	//delete.jsp로 이동
+	@RequestMapping("/delete")
+	public void delete(int ano){	
+	}
+}

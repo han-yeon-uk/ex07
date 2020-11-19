@@ -1,0 +1,10 @@
+package com.example.mapper_oracle;
+
+import java.util.List;
+
+import com.example.domain.Criteria;
+import com.example.domain.ReplyVO;
+
+public interface ReplyMapper {
+	public List<ReplyVO> list(Criteria cri);
+}

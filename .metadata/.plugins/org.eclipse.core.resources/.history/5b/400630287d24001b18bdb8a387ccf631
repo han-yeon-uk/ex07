@@ -1,0 +1,40 @@
+package com.example.controller;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import com.example.domain.Criteria;
+import com.example.mapper_oracle.BoardMapper;
+import com.example.mapper_oracle.ReplyMapper;
+
+@RunWith(SpringJUnit4ClassRunner.class) //���� SpringJUnit4ClassRunner.class import�Ѵ�.
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
+
+public class BoardTest {
+	@Autowired
+	private BoardMapper mapper;
+	
+	@Test
+	public void list() { 
+		Criteria cri=new Criteria();
+		cri.setPerPageNum(20);
+		cri.setPage(1);
+		cri.setSearchType("writer");
+		cri.setKeyword("user05");
+		mapper.list(cri); 
+		mapper.totalCount(cri);
+		mapper.read(20);
+	}
+	
+	@Autowired
+	private ReplyMapper rmapper;
+	
+	@Test
+	public void rlist(){
+		Criteria cri1=new Criteria();
+		rmapper.list(192, cri1);
+	}
+}

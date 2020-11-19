@@ -1,0 +1,31 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>입출금 관리</title>
+</head>
+<body>
+	<h1>[통장목록]</h1>
+	<table border=1>
+		<tr class="title">
+			<td width=100>계좌번호</td>
+			<td width=100>이름</td>
+			<td width=250>통장 개설일</td>
+			<td width=100>잔액</td>
+			<td width=150>통장내역</td>
+		</tr>
+		<c:forEach items="${list}" var="vo">
+			<tr class="title">
+				<td>${vo.ano}</td>
+				<td>${vo.name}</td>
+				<td>${vo.openDate}</td>
+				<td>${vo.balance}</td>
+				<td><button>통장내역</button></td>
+			</tr>
+		</c:forEach>
+	</table>
+</body>
+</html>

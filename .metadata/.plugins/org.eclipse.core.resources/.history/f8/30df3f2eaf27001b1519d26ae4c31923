@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.TradeMapper">
+ <select id="list" resultType="com.example.domain.TradeVO">
+ 	select t.*, name from tbl_trade t,tbl_account a 
+ 	where t.ano=#{ano} and a.ano=t.tradeNo 
+ 	order by tid desc
+ </select>
+ <insert id="insert1">
+ 	insert into tbl_trade(ano,type,tradeNo,amount) 
+ 	values(#{ano},#{type},#{tradeNo},#{amount})
+ </insert>
+  <insert id="insert2">
+ 	insert into tbl_trade(ano,type,tradeNo,amount) 
+ 	values(#{ano},#{type},#{tradeNo},#{amount})
+ </insert>
+</mapper>
